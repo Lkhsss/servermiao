@@ -25,6 +25,7 @@ async fn main() -> std::io::Result<()> {
         App::new().service(
             fs::Files::new("/", &serverpath)
                 .show_files_listing() //是否自动打开index.html
+                .index_file("index.html")
                 .use_etag(true) //是否返回etag
                 .use_hidden_files() //是否使用隐藏文件
                 .prefer_utf8(true) //是否优先使用utf8编码
