@@ -1,6 +1,11 @@
 use actix_files as fs;
 use actix_web::{App, HttpServer};
-use std::{env, path::Path};
+use std::{
+    env,
+    net::{IpAddr, Ipv4Addr},
+    path::Path,
+};
+use colored::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -15,12 +20,20 @@ async fn main() -> std::io::Result<()> {
             port = arg.parse().unwrap()
         }
     }
-    let serverpath = Path::new(&path).to_owned().canonicalize().unwrap();
+    let serverpath = Path::new(&path).to_owned().canonicalize().unwrap(); //获取启动路径
+
+    // 获取本机ip
+    let mut ip = IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0));
+    let my_local_ip = local_ip_address::local_ip();
+    if let Ok(my_local_ip) = my_local_ip {
+        ip = my_local_ip;
+    }
     println!(
-        "[INFO] 在[ 0.0.0.0:{} ]上启动服务\n目标文件夹：[{}]",
-        port,
-        serverpath.display()
+        "[INFO] 在 [ {} ] 上启动服务\n[INFO]目标文件夹：[{}]",
+        format!("{}:{}",ip,port).bright_green(),
+        format!("{}",serverpath.display()).bright_cyan()
     );
+
     HttpServer::new(move || {
         App::new().service(
             fs::Files::new("/", &serverpath)
