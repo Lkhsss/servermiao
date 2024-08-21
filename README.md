@@ -15,3 +15,5 @@
 ```bash
 cargo build -r
 ```
+
+> 建议放到`C:\Windows\System32`食用更加方便哦!

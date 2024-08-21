@@ -2,6 +2,7 @@
 name = "servermiao"
 version = "1.1.0"
 edition = "2021"
+build = "src/build.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -16,3 +17,6 @@ strip = true
 # strip = "debuginfo" #仅移除debug信息
 lto = true #启用链接时间优化
 panic = "abort" #panic时直接abort
+
+[build-dependencies]
+winres = "0.1.12"

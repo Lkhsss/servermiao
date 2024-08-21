@@ -13,7 +13,7 @@ async fn main() -> std::io::Result<()> {
     let mut port = 8000;
     let mut path = String::from(".");
     for arg in args.into_iter().skip(1) {
-        if if_Path(&arg) {
+        if if_path(&arg) {
             path = arg.parse().unwrap()
         } else if if_port(&arg) {
             port = arg.parse().unwrap()
@@ -29,8 +29,8 @@ async fn main() -> std::io::Result<()> {
     }
     println!(
         "[INFO] Power By Lkhsss \n[INFO] 在 [ {} ] 上启动服务\n[INFO] 目标文件夹：[{}]",
-        format!("{}:{}",ip,port),
-        format!("{}",serverpath.display())
+        format!("{}:{}", ip, port),
+        format!("{}", serverpath.display())
     );
 
     HttpServer::new(move || {
@@ -55,7 +55,7 @@ fn if_port(num: &str) -> bool {
         Err(_) => false,
     }
 }
-fn if_Path(path: &str) -> bool {
+fn if_path(path: &str) -> bool {
     let p = Path::new(path);
     if p.is_dir() {
         true
