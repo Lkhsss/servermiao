@@ -1043,7 +1043,7 @@ dependencies = [
 
 [[package]]
 name = "servermiao"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
  "actix-files",
  "actix-web",
