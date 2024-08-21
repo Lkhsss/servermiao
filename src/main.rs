@@ -5,7 +5,6 @@ use std::{
     net::{IpAddr, Ipv4Addr},
     path::Path,
 };
-use colored::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -29,9 +28,9 @@ async fn main() -> std::io::Result<()> {
         ip = my_local_ip;
     }
     println!(
-        "[INFO] 在 [ {} ] 上启动服务\n[INFO]目标文件夹：[{}]",
-        format!("{}:{}",ip,port).bright_green(),
-        format!("{}",serverpath.display()).bright_cyan()
+        "[INFO] Power By Lkhsss \n[INFO] 在 [ {} ] 上启动服务\n[INFO] 目标文件夹：[{}]",
+        format!("{}:{}",ip,port),
+        format!("{}",serverpath.display())
     );
 
     HttpServer::new(move || {
