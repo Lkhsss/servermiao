@@ -7,9 +7,9 @@ build = "src/build.rs"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-files = "0.6.5"
-actix-web = "4.5.1"
-local-ip-address = "0.6.1"
+actix-files = {version="0.6.5",default-features = false}
+actix-web = {version="4.5.1",default-features = false,features=["macros"]}
+local-ip-address = {version="0.6.1",default-features = false}
 
 [profile.release]
 #缩小编译后体积
@@ -17,6 +17,7 @@ strip = true
 # strip = "debuginfo" #仅移除debug信息
 lto = true #启用链接时间优化
 panic = "abort" #panic时直接abort
+opt-level = "z" #优化级别
 
 [build-dependencies]
-winres = "0.1.12"
+winres = {version="0.1.12",default-features = false}
