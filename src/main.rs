@@ -28,7 +28,8 @@ async fn main() -> std::io::Result<()> {
         ip = my_local_ip;
     }
     println!(
-        "[INFO] Power By Lkhsss \n[INFO] 在 [ {} ] 上启动服务\n[INFO] 目标文件夹：[{}]",
+        "[INFO] Power By Lkhsss \n[INFO] v{}\n[INFO] 启动服务: [ {} ] \n[INFO] 目标文件夹：[{}]",
+        env!("CARGO_PKG_VERSION"),
         format!("{}:{}", ip, port),
         format!("{}", serverpath.display())
     );
